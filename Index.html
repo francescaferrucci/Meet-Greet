@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hannah Pet Hospital | Puppy Meet & Greet</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fefbf7 0%, #f9f3ee 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+        }
+
+        /* main card */
+        .landing-card {
+            max-width: 1280px;
+            width: 100%;
+            background: white;
+            border-radius: 2.5rem;
+            box-shadow: 0 30px 60px -15px rgba(99, 60, 30, 0.2), 0 10px 25px -8px rgba(110, 70, 40, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            transition: all 0.2s ease;
+        }
+
+        /* left side — hero + branding */
+        .hero-section {
+            flex: 1 1 50%;
+            background: url('https://images.pexels.com/photos/4587959/pexels-photo-4587959.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') center/cover no-repeat;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 2.5rem 2.2rem;
+            min-height: 500px;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(147, 93, 60, 0.4) 0%, rgba(88, 52, 30, 0.7) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 550px;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.2rem, 6vw, 3.4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(120deg, #ffe8b0, #ffd793);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 2rem;
+            margin: 1.8rem 0 1rem;
+            font-size: 1.1rem;
+            font-weight: 400;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-features i {
+            margin-right: 0.6rem;
+            color: #ffdb9d;
+        }
+
+        .puppy-gallery {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.8rem;
+        }
+
+        .puppy-gallery img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 245, 220, 0.7);
+            object-fit: cover;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+        }
+
+        /* right side — form */
+        .form-section {
+            flex: 1 1 45%;
+            background: white;
+            padding: 2.8rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .form-header h2 {
+            font-size: 2rem;
+            font-weight: 650;
+            color: #2f1d0e;
+            letter-spacing: -0.02em;
+        }
+
+        .form-header h2 i {
+            color: #b47d56;
+            margin-right: 8px;
+        }
+
+        .form-header p {
+            color: #735e4b;
+            font-size: 1.1rem;
+            margin-top: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-header p i {
+            color: #8f6b48;
+        }
+
+        .puppy-selector {
+            background: #fbf6f0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 1.8rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border: 1px solid #f0e0d0;
+        }
+
+        .puppy-selector span {
+            font-weight: 600;
+            color: #4f3a28;
+            font-size: 1.1rem;
+        }
+
+        .available-tag {
+            background: #d7b8a0;
+            color: #2f1d0e;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .available-tag i {
+            margin-right: 6px;
+            color: #1f7a3d;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .form-row .form-group {
+            flex: 1 1 200px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 550;
+            color: #3f2e1d;
+            font-size: 0.95rem;
+        }
+
+        label i {
+            color: #b47d56;
+            width: 1.4rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 1.5px solid #eadbcb;
+            border-radius: 1.5rem;
+            font-size: 1rem;
+            background: white;
+            transition: all 0.2s;
+            outline: none;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #b4825a;
+            box-shadow: 0 0 0 4px rgba(180, 130, 90, 0.15);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #bbaa99;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin: 1.8rem 0 2rem;
+        }
+
+        .checkbox-group input {
+            width: 1.3rem;
+            height: 1.3rem;
+            accent-color: #b47d56;
+            margin: 0;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-weight: 400;
+            color: #4d4137;
+        }
+
+        .btn-submit {
+            background: #7b583b;
+            color: white;
+            border: none;
+            padding: 1.1rem 2rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-radius: 3rem;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 15px 25px -8px #a77b58;
+            border: 1px solid #9e7b5c;
+        }
+
+        .btn-submit:hover {
+            background: #8f6848;
+            transform: scale(1.01);
+            box-shadow: 0 18px 30px -6px #b48b68;
+        }
+
+        .btn-submit i {
+            font-size: 1.3rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 2rem;
+            color: #887a6b;
+            font-size: 0.95rem;
+            border-top: 1px dashed #ebdad0;
+            padding-top: 1.5rem;
+        }
+
+        .footer-note a {
+            color: #7b583b;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+
+        /* micro */
+        .inline-icon {
+            margin-right: 6px;
+        }
+
+        @media (max-width: 850px) {
+            .landing-card {
+                border-radius: 2rem;
+            }
+            .hero-section {
+                min-height: 400px;
+            }
+            .form-section {
+                padding: 2rem 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="landing-card">
+    <!-- Left side: Hero & puppy vibe -->
+    <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="badge">
+                <i class="fas fa-paw" style="margin-right: 8px;"></i> 7 fluffy puppies waiting
+            </div>
+            <h1>Find your <span>perfect</span><br>puppy companion</h1>
+            <div class="hero-features">
+                <span><i class="fas fa-stethoscope"></i> Vet-checked</span>
+                <span><i class="fas fa-syringe"></i> Vaccinated</span>
+                <span><i class="fas fa-heart"></i> Socialised</span>
+            </div>
+            <p style="font-size: 1.2rem; font-weight: 300; max-width: 450px; text-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+                Meet & Greet at Hannah Pet Hospital — zero pressure, all cuddles.
+            </p>
+            <!-- little puppy faces (placeholder images from pexels; small cute dogs) -->
+            <div class="puppy-gallery">
+                <img src="https://images.pexels.com/photos/39317/chihuahua-dog-puppy-cute-39317.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="puppy 1" loading="lazy">
+                <img src="https://images.pexels.com/photos/356378/pexels-photo-356378.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="puppy 2" loading="lazy">
+                <img src="https://images.pexels.com/photos/1904105/pexels-photo-1904105.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="puppy 3" loading="lazy">
+                <img src="https://images.pexels.com/photos/58997/pexels-photo-58997.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="puppy 4" loading="lazy">
+                <img src="https://images.pexels.com/photos/2023384/pexels-photo-2023384.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="puppy 5" loading="lazy">
+            </div>
+        </div>
+    </div>
+
+    <!-- Right side: Meet & Greet form -->
+    <div class="form-section">
+        <div class="form-header">
+            <h2><i class="fas fa-paw"></i> Schedule a Meet & Greet</h2>
+            <p><i class="fas fa-calendar-check"></i> Come meet your future best friend</p>
+        </div>
+
+        <!-- puppy availability snippet -->
+        <div class="puppy-selector">
+            <span><i class="fas fa-dog" style="margin-right: 6px;"></i> Available puppies</span>
+            <span class="available-tag"><i class="fas fa-circle"></i> 7 ready today</span>
+        </div>
+
+        <!-- meet & greet form (no JS, just UI) -->
+        <form action="#" method="post">
+            <div class="form-row">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> First name *</label>
+                    <input type="text" placeholder="e.g. Hannah" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Last name</label>
+                    <input type="text" placeholder="e.g. Peterson">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Email address *</label>
+                <input type="email" placeholder="you@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-phone-alt"></i> Phone *</label>
+                <input type="tel" placeholder="(123) 456-7890" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label><i class="fas fa-calendar-day"></i> Preferred date *</label>
+                    <input type="date" value="2025-03-20" min="2025-03-20" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-clock"></i> Time *</label>
+                    <select required>
+                        <option value="">Select time</option>
+                        <option>10:00 AM</option>
+                        <option>11:30 AM</option>
+                        <option>1:00 PM</option>
+                        <option>2:30 PM</option>
+                        <option>4:00 PM</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-dog"></i> Choose puppy (optional)</label>
+                <select>
+                    <option value="">Any available puppy ❤️</option>
+                    <option>Cooper (golden retriever)</option>
+                    <option>Luna (corgi)</option>
+                    <option>Charlie (beagle)</option>
+                    <option>Bella (cavalier)</option>
+                    <option>Milo (jack russell)</option>
+                    <option>Rosie (labradoodle)</option>
+                    <option>Oliver (shih tzu)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-comment"></i> Anything we should know?</label>
+                <textarea rows="2" placeholder="Allergies, special requests…"></textarea>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="updates" checked>
+                <label for="updates">I'd like to receive helpful puppy tips & updates from Hannah Pet Hospital (you can unsubscribe anytime)</label>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <i class="fas fa-paw"></i> Confirm Meet & Greet
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </form>
+
+        <div class="footer-note">
+            <i class="fas fa-shield-alt" style="margin-right: 6px;"></i> Your info is safe with us. By submitting you agree to our <a href="#">privacy policy</a>.<br>
+            <span style="display: inline-block; margin-top: 0.5rem;"><i class="fas fa-map-pin"></i> Hannah Pet Hospital · 123 Pawsome Street · (555) 726-7847</span>
+        </div>
+    </div>
+</div>
+
+<!-- tiny extra: floating badge for emphasis (optional) -->
+<div style="margin-top: 1.5rem; color: #8d735b; font-size: 0.95rem; display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
+    <span><i class="fas fa-check-circle" style="color: #6d8f6d;"></i> 100% no-obligation meeting</span>
+    <span><i class="fas fa-bone"></i> Treats & playtime included</span>
+    <span><i class="fas fa-user-md"></i> Talk with our vets</span>
+</div>
+
+<!-- no actual form action, just demo -->
+</body>
+</html>
