@@ -361,80 +361,80 @@
         </div>
 
         <!-- meet & greet form (no JS, just UI) -->
-        <form action="https://hooks.zapier.com/hooks/catch/16627828/ucyvmeq/" method="post">
-            <div class="form-row">
-                <div class="form-group">
-                    <label><i class="fas fa-user"></i> First name *</label>
-                    <input type="text" placeholder="e.g. Hannah" required>
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-user"></i> Last name</label>
-                    <input type="text" placeholder="e.g. Peterson">
-                </div>
-            </div>
+        <!-- meet & greet form -->
+<form action="https://hooks.zapier.com/hooks/catch/16627828/ucyvmeq/" method="post">
+    <div class="form-row">
+        <div class="form-group">
+            <label><i class="fas fa-user"></i> First name *</label>
+            <input type="text" name="first_name" placeholder="e.g. Hannah" required>
+        </div>
+        <div class="form-group">
+            <label><i class="fas fa-user"></i> Last name</label>
+            <input type="text" name="last_name" placeholder="e.g. Peterson">
+        </div>
+    </div>
 
-            <div class="form-group">
-                <label><i class="fas fa-envelope"></i> Email address *</label>
-                <input type="email" placeholder="you@example.com" required>
-            </div>
+    <div class="form-group">
+        <label><i class="fas fa-envelope"></i> Email address *</label>
+        <input type="email" name="email" placeholder="you@example.com" required>
+    </div>
 
-            <div class="form-group">
-                <label><i class="fas fa-phone-alt"></i> Phone *</label>
-                <input type="tel" placeholder="(123) 456-7890" required>
-            </div>
+    <div class="form-group">
+        <label><i class="fas fa-phone-alt"></i> Phone *</label>
+        <input type="tel" name="phone" placeholder="(123) 456-7890" required>
+    </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label><i class="fas fa-calendar-day"></i> Preferred date *</label>
-                    <input type="date" value="2026-02-16" min="2026-02-16" required>
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-clock"></i> Time *</label>
-                    <select required>
-                        <option value="">Select time</option>
-                        <option>10:00 AM</option>
-                        <option>11:30 AM</option>
-                        <option>1:00 PM</option>
-                        <option>2:30 PM</option>
-                        <option>4:00 PM</option>
-                    </select>
-                </div>
-            </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label><i class="fas fa-calendar-day"></i> Preferred date *</label>
+            <input type="date" name="preferred_date" value="2026-02-16" min="2026-02-16" required>
+        </div>
+        <div class="form-group">
+            <label><i class="fas fa-clock"></i> Time *</label>
+            <select name="preferred_time" required>
+                <option value="">Select time</option>
+                <option>10:00 AM</option>
+                <option>11:30 AM</option>
+                <option>1:00 PM</option>
+                <option>2:30 PM</option>
+                <option>4:00 PM</option>
+            </select>
+        </div>
+    </div>
 
-            <div class="form-group">
-                <label><i class="fas fa-dog"></i> Choose puppy (optional)</label>
-                <select>
-                    <option value="">Any available puppy ❤️</option>
-                    <option>Mars</option>
-                    <option>Pluto</option>
-                    <option>Mercury</option>
-                    <option>Uranus</option>
-                    <option>Earth</option>
-                    <option>Moon</option>
-                    <option>Venus</option>
-                    <option>Saturn</option>
-                    <option>Neptune</option>
-                    <option>Eris</option>
-                    <option>Ceres</option>
-                </select>
-            </div>
+    <div class="form-group">
+        <label><i class="fas fa-dog"></i> Choose puppy (optional)</label>
+        <select name="puppy_choice">
+            <option value="">Any available puppy ❤️</option>
+            <option>Mars</option>
+            <option>Pluto</option>
+            <option>Mercury</option>
+            <option>Uranus</option>
+            <option>Earth</option>
+            <option>Moon</option>
+            <option>Venus</option>
+            <option>Saturn</option>
+            <option>Neptune</option>
+            <option>Eris</option>
+            <option>Ceres</option>
+        </select>
+    </div>
 
-            <div class="form-group">
-                <label><i class="fas fa-comment"></i> Anything we should know?</label>
-                <textarea rows="2" placeholder="Allergies, special requests…"></textarea>
-            </div>
+    <div class="form-group">
+        <label><i class="fas fa-comment"></i> Anything we should know?</label>
+        <textarea name="special_requests" rows="2" placeholder="Allergies, special requests…"></textarea>
+    </div>
 
-            <div class="checkbox-group">
-                <input type="checkbox" id="updates" checked>
-                <label for="updates">I'd like to receive helpful puppy tips & updates from Hannah Pet Hospital (you can unsubscribe anytime)</label>
-            </div>
+    <div class="checkbox-group">
+        <input type="checkbox" id="updates" name="email_updates" checked>
+        <label for="updates">I'd like to receive helpful puppy tips & updates from Hannah Pet Hospital (you can unsubscribe anytime)</label>
+    </div>
 
-            <button type="submit" class="btn-submit">
-                <i class="fas fa-paw"></i> Confirm Meet & Greet
-                <i class="fas fa-arrow-right"></i>
-            </button>
-        </form>
-
+    <button type="submit" class="btn-submit">
+        <i class="fas fa-paw"></i> Confirm Meet & Greet
+        <i class="fas fa-arrow-right"></i>
+    </button>
+</form>
         <div class="footer-note">
             <i class="fas fa-shield-alt" style="margin-right: 6px;"></i> Your info is safe with us. By submitting you agree to our <a href="#">privacy policy</a>.<br>
             <span style="display: inline-block; margin-top: 0.5rem;"><i class="fas fa-map-pin"></i> Hannah Pet Hospital · 10526 SE Washington Street, Suite A-103 · (503) 905-5200</span>
